@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Question</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-family:Arial, sans-serif;
+        background:linear-gradient(135deg,#ff4e8a,#ff9acb);
+        overflow:hidden;
+        text-align:center;
+    }
+
+    h1{
+        color:white;
+        margin-bottom:20px;
+    }
+
+    .btn{
+        padding:12px 25px;
+        font-size:18px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        margin:10px;
+        transition:0.2s;
+    }
+
+    #yes{
+        background:#28a745;
+        color:white;
+    }
+
+    #no{
+        background:#dc3545;
+        color:white;
+        position:absolute;
+    }
+
+    /* bouquet popup */
+    .popup{
+        display:none;
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);
+        animation:pop 0.3s ease;
+    }
+
+    @keyframes pop{
+        from{transform:translate(-50%,-50%) scale(0.5);}
+        to{transform:translate(-50%,-50%) scale(1);}
+    }
+
+    .flowers{
+        font-size:40px;
+    }
+</style>
+</head>
+
+<body>
+
+<div>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <button id="yes" class="btn">Yes</button>
+    <button id="no" class="btn">No</button>
+</div>
+
+<div id="popup" class="popup">
+    <div class="flowers">💐🌸🌹🌷🌺</div>
+    <h2>Yayyy!! ❤️</h2>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const popup = document.getElementById("popup");
+
+    // YES click
+    yesBtn.onclick = () => {
+        popup.style.display = "block";
+    };
+
+    // NO click -> move button
+    noBtn.onclick = () => {
+        alert("You clicked in a empty space 😜");
+
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    };
+</script>
+
+</body>
+</html>
